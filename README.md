@@ -22,5 +22,39 @@ public class BankTest {
   }
     }
 
+public class ReadDataFromExcel {
 
+    public String ReadData(int k) throws IOException {
+
+        HashMap<Integer, String>  Values = new HashMap<Integer, String>();
+        int p=0;
+        String path = System.getProperty("user.dir");
+        String xlFile = path + "\\src\\main\\File\\TestData.xlsx";
+        File file = new File(xlFile);
+        FileInputStream fis = new FileInputStream(file);
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheet = workbook.getSheetAt(0);
+        int rowCount = sheet.getPhysicalNumberOfRows();
+
+        for (int i = 1; i < rowCount; i++) {
+            XSSFRow row = sheet.getRow(i);
+
+            int cellCount = row.getPhysicalNumberOfCells();
+            for (int j = 0; j < cellCount; j++) {
+                XSSFCell cell = row.getCell(j);
+                //String cellValues= getCellValue(cell);
+                String cellValues= cell.getStringCellValue();
+                Values.put(p,cellValues);
+                //System.out.println(Values.get(p));
+                p++;
+            }
+            System.out.println();
+
+        }
+
+        fis.close();
+        return  Values.get(k);
+    }
+
+}
     
