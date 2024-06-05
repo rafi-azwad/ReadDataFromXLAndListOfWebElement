@@ -16,7 +16,7 @@ public class BankTest {
 
     System.out.println("Total links are: "+links.size());
     for (WebElement link: links) {
-        System.out.println("Links are: "+link.getAttribute("href"));
+        System.out.println("Links are: "+link.getAttribute("href"));  //how many href in this links
     }
 
   }
