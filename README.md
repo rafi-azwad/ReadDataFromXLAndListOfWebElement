@@ -13,6 +13,10 @@ public class BankTest {
         a1.AddCustomer(RD1.ReadData(6), RD1.ReadData(7), RD1.ReadData(8));
 
     List<WebElement> links = driver.findElements(By.tagName("link"));
+    
+    //list of element using explicit wait
+    List<WebElement> apples = new WebDriverWait(driver, Duration.ofSeconds(10)).
+                until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'Apple')]")));
 
     System.out.println("Total links are: "+links.size());
     for (WebElement link: links) {
